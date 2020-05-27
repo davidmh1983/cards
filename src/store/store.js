@@ -29,6 +29,9 @@ const getters = {
       return card.code
     })
   },
+  isDisabled() {
+    return state.cards.length === 0 && state.rotationCard === ''
+  }
 };
 
 // actions
@@ -42,6 +45,11 @@ const actions = {
   async submit({commit}) {
     let res = await axios.get(`https://deckofcardsapi.com/api/deck/${state.deckId}/pile/chosen/add/?cards=${state.cards}`);
     commit('setNumOfCards', res.data.piles.chosen.remaining)
+  },
+  async getCardsOnPile({commit}) {
+    setTimeout({},300);
+    let res = await axios.get(`https://deckofcardsapi.com/api/deck/${state.deckId}/pile/chosen/list/`);
+    commit('setChosenCards', res.data.piles.chosen.cards)
   },
   setAllCards({ commit }) {
     let cards=[];
@@ -82,6 +90,9 @@ const mutations = {
   },
   setNumOfCards(state, num) {
     state.numOfCards = parseInt(num);
+  },
+  setChosenCards(state, cards) {
+    state.chosenCards = cards;
   }
 };
 

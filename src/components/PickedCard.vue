@@ -1,7 +1,7 @@
 <template>
   <div class="picked-card">
     <label> CARD {{ index }} </label>
-    <input type="text" maxlength="2" v-model="value" :class="valid" @blur="updateCards"/>
+    <input type="text" maxlength="2" v-model="value" :class="valid" @blur="updateCards" placeholder="Enter card"/>
   </div>
 </template>
 
@@ -69,6 +69,12 @@ export default {
   align-items: flex-start;
   margin: 10px 0;
   justify-content: flex-start;
+}
+label {
+  font-size: 12px;
+  margin-bottom: 5px;
+  color: #999;
+  font-weight: bold;
 }
 input {
   padding: 8px;

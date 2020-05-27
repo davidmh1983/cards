@@ -7,7 +7,7 @@
       <RotationCard />
     </div>
     <div>
-      <div class="cards-form__submit" @click="submit" >Submit</div>
+      <button class="cards-form__submit" :disabled="isDisabled" @click="submit">Submit</button>
     </div>
   </div>
 </template>
@@ -15,7 +15,7 @@
 <script>
 import PickedCard from './PickedCard.vue'
 import RotationCard from './RotationCard.vue'
-import { mapState } from 'vuex'
+import { mapState, mapGetters } from 'vuex'
 export default {
   name: 'CardsForm',
   components: {
@@ -28,8 +28,9 @@ export default {
   computed: {
     ...mapState({
       cards: state => state.store.cards,
-      deckId: state => state.store.deckId
-    })
+      deckId: state => state.store.deckId,
+    }),
+    ...mapGetters("store",["isDisabled"] )
   },
   methods: {
     submit() {
@@ -71,7 +72,12 @@ export default {
     font-family: sans-serif;
     font-weight: 600;  
     margin: 200px auto 0 auto;
+    cursor: pointer;
   }
+}
+button:disabled {
+  opacity: 0.5;
+  cursor: default;
 }
 
 </style>
