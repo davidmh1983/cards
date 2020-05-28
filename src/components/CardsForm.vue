@@ -40,8 +40,8 @@ export default {
           valids.push(this.cards[i])
         }
       }
-      this.$store.dispatch('store/submit', valids).then(
-      this.$router.push(`/deck/${this.deckId}`))
+      this.$store.dispatch('store/submit', valids)
+      // this.$router.push(`/deck/${this.deckId}`))
     }
     
   }

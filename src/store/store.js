@@ -1,4 +1,5 @@
 import axios from 'axios';
+import router from '../router';
 
 
 const state = {
@@ -30,7 +31,7 @@ const getters = {
     })
   },
   isDisabled() {
-    return state.cards.length === 0 && state.rotationCard === ''
+    return !state.cards.some((element) => element.value !== '') && state.rotationCard === ''
   }
 };
 
@@ -45,9 +46,9 @@ const actions = {
   async submit({commit}) {
     let res = await axios.get(`https://deckofcardsapi.com/api/deck/${state.deckId}/pile/chosen/add/?cards=${state.cards}`);
     commit('setNumOfCards', res.data.piles.chosen.remaining)
+    router.push(`/deck/${state.deckId}`)
   },
   async getCardsOnPile({commit}) {
-    setTimeout({},300);
     let res = await axios.get(`https://deckofcardsapi.com/api/deck/${state.deckId}/pile/chosen/list/`);
     commit('setChosenCards', res.data.piles.chosen.cards)
   },
@@ -76,7 +77,6 @@ const actions = {
 // mutations
 const mutations = {
   setDeckId(state, data){
-    console.log(data)
     state.deckId = data.data;
   },
   setAllCards(state, cards) {

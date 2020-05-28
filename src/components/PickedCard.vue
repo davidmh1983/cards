@@ -81,6 +81,7 @@ input {
   border-radius: 4px;
   width: 80%;
   border: 0;
+  text-transform: uppercase;
 }
 .normal {
   color: black;

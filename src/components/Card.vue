@@ -1,18 +1,14 @@
 <template>
-  <div class="card">
+  <div class="card" :class="code">
     <div class="normal">
       <span class="card-value">{{ code.split('')[0] }}</span>
-      <img :src="getImage" height="20px" width="20px"/>
+      <img :src="getImage" :alt="code.split('')[1]" height="20px" width="20px"/>
     </div>
     <div class="mirror">
       <span class="card-value">{{ code.split('')[0] }}</span>
       <img :src="getImage" height="20px" width="20px"/>
     </div>
   </div>
-
-  <!--<div class="card">
-    <img :src="`https://deckofcardsapi.com/static/img/${code}.png`" :class="size"/>
-  </div>-->
 </template>
 
 <script>
