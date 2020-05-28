@@ -5,7 +5,7 @@
 yarn install
 ```
 
-### Compiles and hot-reloads for development
+### Compiles and check project
 ```
 yarn serve
 When the project is running, go to route /deck/new
