@@ -41,7 +41,6 @@ export default {
         }
       }
       this.$store.dispatch('store/submit', valids)
-      // this.$router.push(`/deck/${this.deckId}`))
     }
     
   }

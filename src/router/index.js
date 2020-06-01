@@ -5,6 +5,10 @@ Vue.use(VueRouter)
 
   const routes = [
   {
+    path: '/', redirect: () => { return '/deck/new';},
+    name: 'Start Point'
+  },
+  {
     path: '/deck/new',
     name: 'New',
     component: () => import('../views/New.vue')
